@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 
 import { AppError } from "../../middleware/globalErrorHandler";
-import { PrismaClient, serviceStatus } from "@prisma/client";
+import { Prisma, PrismaClient, serviceStatus } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -56,20 +56,22 @@ const updateStatusIntoDB = async (serviceId: string, status: string) => {
     );
   }
 
-  const result = await prisma.$transaction(async (transactionClient) => {
-    const updateStatus = await transactionClient.service.update({
-      where: { serviceId },
-      data: {
-        status: status as serviceStatus,
-      },
-      include: { bike: true },
-    });
-    const updateDate = await transactionClient.$queryRaw`UPDATE "Service"
+  const result = await prisma.$transaction(
+    async (transactionClient: Prisma.TransactionClient) => {
+      const updateStatus = await transactionClient.service.update({
+        where: { serviceId },
+        data: {
+          status: status as serviceStatus,
+        },
+        include: { bike: true },
+      });
+      const updateDate = await transactionClient.$queryRaw`UPDATE "Service"
         SET "completionDate" = NOW()
         WHERE "serviceId" = ${serviceId}`;
 
-    return updateStatus;
-  });
+      return updateStatus;
+    }
+  );
 
   return result;
 };
