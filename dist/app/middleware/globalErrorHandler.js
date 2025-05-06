@@ -15,7 +15,6 @@ class AppError {
 }
 exports.AppError = AppError;
 const globalErrorHandler = (error, req, res, next) => {
-    // console.log(error);
     var _a;
     let message = "Something went wrong";
     let statusCode = 500;

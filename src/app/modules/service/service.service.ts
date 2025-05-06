@@ -57,14 +57,14 @@ const updateStatusIntoDB = async (serviceId: string, status: string) => {
   }
 
   const result = await prisma.$transaction(async (transactionClient) => {
-    const updateStatus = await prisma.service.update({
+    const updateStatus = await transactionClient.service.update({
       where: { serviceId },
       data: {
         status: status as serviceStatus,
       },
       include: { bike: true },
     });
-    const updateDate = await prisma.$queryRaw`UPDATE "Service"
+    const updateDate = await transactionClient.$queryRaw`UPDATE "Service"
         SET "completionDate" = NOW()
         WHERE "serviceId" = ${serviceId}`;
 

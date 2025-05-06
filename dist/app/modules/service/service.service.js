@@ -58,14 +58,14 @@ const updateStatusIntoDB = (serviceId, status) => __awaiter(void 0, void 0, void
             : ` Selected service  ${status}`);
     }
     const result = yield prisma.$transaction((transactionClient) => __awaiter(void 0, void 0, void 0, function* () {
-        const updateStatus = yield prisma.service.update({
+        const updateStatus = yield transactionClient.service.update({
             where: { serviceId },
             data: {
                 status: status,
             },
             include: { bike: true },
         });
-        const updateDate = yield prisma.$queryRaw `UPDATE "Service"
+        const updateDate = yield transactionClient.$queryRaw `UPDATE "Service"
         SET "completionDate" = NOW()
         WHERE "serviceId" = ${serviceId}`;
         return updateStatus;
