@@ -7,7 +7,6 @@ export class AppError {
   constructor(statusCode: number, message: string) {
     this.statusCode = statusCode;
     this.message = message;
-
     Error.captureStackTrace(this, this.constructor);
   }
 }
@@ -16,6 +15,7 @@ type TGlobalError = {
   message: string;
   statusCode: number;
   errorSource: TErrorSource[];
+  stack?: string;
 };
 type TErrorSource = {
   path: string | number;
@@ -27,8 +27,6 @@ export const globalErrorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  // console.log(error);
-
   let message = "Something went wrong";
   let statusCode = 500;
   let errorSource: TErrorSource[] = [{ path: "", message: "" }];
@@ -48,7 +46,6 @@ export const globalErrorHandler = (
     message = "zodError";
     errorSource = handleZodErrors;
   }
-
   res.status(statusCode).json({
     success: false,
     message,

@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
-import { PrismaClient, serviceStatus } from "../../../generated/prisma";
+
 import { AppError } from "../../middleware/globalErrorHandler";
+import { PrismaClient, serviceStatus } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
