@@ -1,5 +1,5 @@
+import { serviceStatus } from "@prisma/client";
 import { z } from "zod";
-import { serviceStatus } from "../../../generated/prisma";
 
 const create = z.object({
   body: z.object({
