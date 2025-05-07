@@ -61,28 +61,28 @@ The application uses Prisma ORM with UUIDs as the primary keys for all tables.
 
 ### 🔹 Customer Management
 
-- **POST** `/api/customers/create-customer` - Create a new customer
-- **GET** `/api/customers` - Retrieve all customers
-- **GET** `/api/customers/:customerId` - Get customer by ID
-- **PUT** `/api/customers/:customerId` - Update a customer
+- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/create-customer` - Create a new customer
+- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers` - Retrieve all customers
+- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/:customerId` - Get customer by ID
+- **PUT** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/:customerId` - Update a customer
 - **DELETE** `/api/customers/:customerId` - Delete a customer
 
 ---
 
 ### 🔹 Bike Management
 
-- **POST** `/api/bikes/add-bike` - Add a new bike
-- **GET** `/api/bikes` - Retrieve all bikes
-- **GET** `/api/bikes/:bikeId` - Get bike by ID
+- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes/add-bike` - Add a new bike
+- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes` - Retrieve all bikes
+- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes/:bikeId` - Get bike by ID
 
 ---
 
 ### 🔹 Service Management
 
-- **POST** `/api/services/create-service` - Create a service record
-- **GET** `/api/services` - Get all service records
-- **GET** `/api/services/:serviceId` - Get service by ID
-- **PUT** `/api/services/update-status/:serviceId` - Update service status.
-- **GET** `/api/services/status/:status` - Have status = "pending" or "in-progress"
+- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/create-service` - Create a service record
+- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services` - Get all service records
+- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/:serviceId` - Get service by ID
+- **PUT** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/update-status/:serviceId` - Update service status.
+- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/status/:status` - Have status = "pending" or "in-progress"
 
 ---
