@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "serviceStatus" AS ENUM ('PENDING', 'COMPLETED', 'REJECTED');
+CREATE TYPE "serviceStatus" AS ENUM ('PENDING', 'COMPLETED', 'REJECTED', 'IN_PROGRESS');
 
 -- CreateTable
 CREATE TABLE "Customer" (
@@ -18,7 +18,7 @@ CREATE TABLE "Bike" (
     "bikeId" TEXT NOT NULL,
     "brand" TEXT NOT NULL,
     "model" TEXT NOT NULL,
-    "year" TIMESTAMP(3) NOT NULL,
+    "year" INTEGER NOT NULL,
     "customerId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -30,10 +30,10 @@ CREATE TABLE "Bike" (
 CREATE TABLE "Service" (
     "serviceId" TEXT NOT NULL,
     "bikeId" TEXT NOT NULL,
-    "serviceDate" TIMESTAMP(3) NOT NULL,
-    "completionDate" TIMESTAMP(3) NOT NULL,
+    "serviceDate" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "completionDate" TIMESTAMP(3),
     "description" TEXT NOT NULL,
-    "status" "serviceStatus" NOT NULL,
+    "status" "serviceStatus" NOT NULL DEFAULT 'PENDING',
 
     CONSTRAINT "Service_pkey" PRIMARY KEY ("serviceId")
 );
