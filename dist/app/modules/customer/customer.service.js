@@ -15,7 +15,7 @@ const globalErrorHandler_1 = require("../../middleware/globalErrorHandler");
 const prisma = new client_1.PrismaClient();
 const createCustomerIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield prisma.customer.create({ data: payload });
+        const result = yield prisma.customer.createMany({ data: payload });
         return result;
     }
     catch (error) {

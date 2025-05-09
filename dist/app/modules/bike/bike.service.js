@@ -14,7 +14,7 @@ const client_1 = require("@prisma/client");
 const globalErrorHandler_1 = require("../../middleware/globalErrorHandler");
 const prisma = new client_1.PrismaClient();
 const addBikeIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma.bike.create({ data: payload });
+    const result = yield prisma.bike.createMany({ data: payload });
     return result;
 });
 const getAllBikesFromDB = () => __awaiter(void 0, void 0, void 0, function* () {

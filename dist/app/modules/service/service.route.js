@@ -8,7 +8,7 @@ const service_controller_1 = require("./service.controller");
 const validateRequest_1 = require("../../utils/validateRequest");
 const service_validation_1 = require("./service.validation");
 const serviceRouter = express_1.default.Router();
-serviceRouter.post("/create-service", (0, validateRequest_1.validateRequest)(service_validation_1.serviceValidation.create), service_controller_1.serviceController.createService);
+serviceRouter.post("/", (0, validateRequest_1.validateRequest)(service_validation_1.serviceValidation.create), service_controller_1.serviceController.createService);
 serviceRouter.get("/", service_controller_1.serviceController.getAllServiceRecord);
 serviceRouter.get("/:serviceId", service_controller_1.serviceController.getServiceRecordById);
 serviceRouter.patch("/update-status/:serviceId", (0, validateRequest_1.validateRequest)(service_validation_1.serviceValidation.updateStatus), service_controller_1.serviceController.updateStatus);

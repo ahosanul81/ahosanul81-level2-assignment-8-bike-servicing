@@ -8,7 +8,7 @@ const customer_controller_1 = require("./customer.controller");
 const validateRequest_1 = require("../../utils/validateRequest");
 const customer_zod_validation_1 = require("./customer.zod.validation");
 const customerRouter = express_1.default.Router();
-customerRouter.post("/create-customer", (0, validateRequest_1.validateRequest)(customer_zod_validation_1.customerValidation.create), customer_controller_1.customerController.createCustomer);
+customerRouter.post("/", (0, validateRequest_1.validateRequest)(customer_zod_validation_1.customerValidation.create), customer_controller_1.customerController.createCustomer);
 customerRouter.get("/", customer_controller_1.customerController.getAllCustomer);
 customerRouter.get("/:customerId", customer_controller_1.customerController.getCustomerById);
 customerRouter.patch("/:customerId", (0, validateRequest_1.validateRequest)(customer_zod_validation_1.customerValidation.update), customer_controller_1.customerController.updateCustomerById);

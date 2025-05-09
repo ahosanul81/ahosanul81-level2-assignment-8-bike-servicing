@@ -5,7 +5,7 @@ import { bikeController } from "./bike.controller";
 const bikeRouter = express.Router();
 
 bikeRouter.post(
-  "/add-bike",
+  "/",
   validateRequest(bikevalidation.add),
   bikeController.addBike
 );

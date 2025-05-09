@@ -13,7 +13,7 @@ exports.bikeController = void 0;
 const catchAcync_1 = require("../../utils/catchAcync");
 const bike_service_1 = require("./bike.service");
 const addBike = (0, catchAcync_1.catchAcync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield bike_service_1.bikeService.addBikeIntoDB(req.body);
+    const result = yield bike_service_1.bikeService.addBikeIntoDB(req.body.data);
     res.status(200).json({
         success: true,
         message: " added bike successfully",

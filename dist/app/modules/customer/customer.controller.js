@@ -13,7 +13,7 @@ exports.customerController = void 0;
 const catchAcync_1 = require("../../utils/catchAcync");
 const customer_service_1 = require("./customer.service");
 const createCustomer = (0, catchAcync_1.catchAcync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield customer_service_1.customerService.createCustomerIntoDB(req.body);
+    const result = yield customer_service_1.customerService.createCustomerIntoDB(req.body.data);
     res.status(200).json({
         success: true,
         message: "added a customer successfully",

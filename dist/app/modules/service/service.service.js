@@ -15,14 +15,38 @@ const globalErrorHandler_1 = require("../../middleware/globalErrorHandler");
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const createServiceIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const isExistBike = yield prisma.bike.findUnique({
-        where: { bikeId: payload.bikeId },
-    });
-    if (!isExistBike) {
-        throw new globalErrorHandler_1.AppError(404, "Selected Bike not found");
+    // console.log(payload);
+    // const bikeIds = payload?.map(
+    //   (item: { bikeId: string; description: string }) => {
+    //     return item.bikeId;
+    //   }
+    // );
+    // const existingBikeIdsInDB = await prisma.bike.groupBy({
+    //   by: ["bikeId"],
+    //   where: {
+    //     bikeId: {
+    //       in: bikeIds,
+    //     },
+    //   },
+    // });
+    // const existingBikeIds = existingBikeIdsInDB?.map(
+    //   (item: { bikeId: string }) => {
+    //     return item.bikeId;
+    //   }
+    // );
+    // if (!existingBikeIds.includes(bikeIds)) {
+    // }
+    // console.log(existingBikeIds);
+    // if (!isExistBike) {
+    //   throw new AppError(404, "Selected Bike not found");
+    // }
+    try {
+        const result = yield prisma.service.createMany({ data: payload });
+        return result;
     }
-    const result = yield prisma.service.create({ data: payload });
-    return result;
+    catch (error) {
+        throw new globalErrorHandler_1.AppError(400, error.message);
+    }
 });
 const getAllServiceRecordFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield prisma.service.findMany({ include: { bike: true } });
@@ -49,10 +73,9 @@ const updateStatusIntoDB = (serviceId, status) => __awaiter(void 0, void 0, void
     if (!isExistService) {
         throw new globalErrorHandler_1.AppError(404, "Selected service not found");
     }
+    console.log(isExistService.status);
     if (isExistService.status === "COMPLETED" ||
-        "REJECTED" ||
-        "PENDING" ||
-        "IN_PROGRESS") {
+        isExistService.status === "REJECTED") {
         throw new globalErrorHandler_1.AppError(http_status_codes_1.StatusCodes.CONFLICT, isExistService.status === "COMPLETED" || "REJECTED"
             ? ` Selected service already ${status}`
             : ` Selected service  ${status}`);
