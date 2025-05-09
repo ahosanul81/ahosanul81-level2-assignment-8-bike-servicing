@@ -3,10 +3,15 @@ import { z } from "zod";
 
 const create = z.object({
   body: z.object({
-    bikeId: z.string(),
-    description: z.string(),
+    data: z.array(
+      z.object({
+        bikeId: z.string(),
+        description: z.string(),
+      })
+    ),
   }),
 });
+
 const updateStatus = z.object({
   body: z.object({
     status: z.enum([

@@ -6,7 +6,7 @@ import { customerValidation } from "./customer.zod.validation";
 const customerRouter = express.Router();
 
 customerRouter.post(
-  "/create-customer",
+  "/",
   validateRequest(customerValidation.create),
   customerController.createCustomer
 );

@@ -5,7 +5,7 @@ import { serviceValidation } from "./service.validation";
 const serviceRouter = express.Router();
 
 serviceRouter.post(
-  "/create-service",
+  "/",
   validateRequest(serviceValidation.create),
   serviceController.createService
 );

@@ -2,7 +2,7 @@ import { catchAcync } from "../../utils/catchAcync";
 import { customerService } from "./customer.service";
 
 const createCustomer = catchAcync(async (req, res) => {
-  const result = await customerService.createCustomerIntoDB(req.body);
+  const result = await customerService.createCustomerIntoDB(req.body.data);
   res.status(200).json({
     success: true,
     message: "added a customer successfully",

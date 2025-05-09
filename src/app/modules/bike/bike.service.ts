@@ -3,7 +3,7 @@ import { AppError } from "../../middleware/globalErrorHandler";
 const prisma = new PrismaClient();
 
 const addBikeIntoDB = async (payload: any) => {
-  const result = await prisma.bike.create({ data: payload });
+  const result = await prisma.bike.createMany({ data: payload });
   return result;
 };
 const getAllBikesFromDB = async () => {

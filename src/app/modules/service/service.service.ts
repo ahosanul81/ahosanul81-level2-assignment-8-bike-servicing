@@ -6,14 +6,37 @@ import { Prisma, PrismaClient, serviceStatus } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const createServiceIntoDB = async (payload: any) => {
-  const isExistBike = await prisma.bike.findUnique({
-    where: { bikeId: payload.bikeId },
-  });
-  if (!isExistBike) {
-    throw new AppError(404, "Selected Bike not found");
+  // console.log(payload);
+  // const bikeIds = payload?.map(
+  //   (item: { bikeId: string; description: string }) => {
+  //     return item.bikeId;
+  //   }
+  // );
+  // const existingBikeIdsInDB = await prisma.bike.groupBy({
+  //   by: ["bikeId"],
+  //   where: {
+  //     bikeId: {
+  //       in: bikeIds,
+  //     },
+  //   },
+  // });
+  // const existingBikeIds = existingBikeIdsInDB?.map(
+  //   (item: { bikeId: string }) => {
+  //     return item.bikeId;
+  //   }
+  // );
+  // if (!existingBikeIds.includes(bikeIds)) {
+  // }
+  // console.log(existingBikeIds);
+  // if (!isExistBike) {
+  //   throw new AppError(404, "Selected Bike not found");
+  // }
+  try {
+    const result = await prisma.service.createMany({ data: payload });
+    return result;
+  } catch (error: any) {
+    throw new AppError(400, error.message);
   }
-  const result = await prisma.service.create({ data: payload });
-  return result;
 };
 const getAllServiceRecordFromDB = async () => {
   const result = await prisma.service.findMany({ include: { bike: true } });
@@ -42,11 +65,11 @@ const updateStatusIntoDB = async (serviceId: string, status: string) => {
   if (!isExistService) {
     throw new AppError(404, "Selected service not found");
   }
+  console.log(isExistService.status);
+
   if (
     isExistService.status === "COMPLETED" ||
-    "REJECTED" ||
-    "PENDING" ||
-    "IN_PROGRESS"
+    isExistService.status === "REJECTED"
   ) {
     throw new AppError(
       StatusCodes.CONFLICT,
