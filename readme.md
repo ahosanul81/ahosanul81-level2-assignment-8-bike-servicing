@@ -61,7 +61,7 @@ The application uses Prisma ORM with UUIDs as the primary keys for all tables.
 
 ### 🔹 Customer Management
 
-- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/create-customer` - Create a new customer
+- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers` - Create a new customer
 - **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers` - Retrieve all customers
 - **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/:customerId` - Get customer by ID
 - **PUT** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/:customerId` - Update a customer
@@ -71,7 +71,7 @@ The application uses Prisma ORM with UUIDs as the primary keys for all tables.
 
 ### 🔹 Bike Management
 
-- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes/add-bike` - Add a new bike
+- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes` - Add a new bike
 - **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes` - Retrieve all bikes
 - **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes/:bikeId` - Get bike by ID
 
@@ -79,7 +79,7 @@ The application uses Prisma ORM with UUIDs as the primary keys for all tables.
 
 ### 🔹 Service Management
 
-- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/create-service` - Create a service record
+- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services` - Create a service record
 - **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services` - Get all service records
 - **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/:serviceId` - Get service by ID
 - **PUT** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/update-status/:serviceId` - Update service status.
