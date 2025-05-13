@@ -5,10 +5,9 @@ const client_1 = require("@prisma/client");
 const zod_1 = require("zod");
 const create = zod_1.z.object({
     body: zod_1.z.object({
-        data: zod_1.z.array(zod_1.z.object({
-            bikeId: zod_1.z.string(),
-            description: zod_1.z.string(),
-        })),
+        bikeId: zod_1.z.string(),
+        description: zod_1.z.string(),
+        status: zod_1.z.string(),
     }),
 });
 const updateStatus = zod_1.z.object({

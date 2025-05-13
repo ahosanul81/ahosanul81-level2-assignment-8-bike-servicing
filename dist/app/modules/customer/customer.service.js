@@ -13,9 +13,24 @@ exports.customerService = void 0;
 const client_1 = require("@prisma/client");
 const globalErrorHandler_1 = require("../../middleware/globalErrorHandler");
 const prisma = new client_1.PrismaClient();
+// const createCustomerIntoDB = async (payload: any) => {
+//   try {
+//     const result = await prisma.customer.createMany({ data: payload });
+//     return result;
+//   } catch (error: any) {
+//     throw new AppError(500, error.message);
+//   }
+// };
 const createCustomerIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield prisma.customer.createMany({ data: payload });
+        const isExistUser = yield prisma.customer.findUnique({
+            where: { email: payload.email },
+        });
+        console.log(isExistUser);
+        if (isExistUser) {
+            throw new globalErrorHandler_1.AppError(401, "This user already exist, Please try another email");
+        }
+        const result = yield prisma.customer.create({ data: payload });
         return result;
     }
     catch (error) {

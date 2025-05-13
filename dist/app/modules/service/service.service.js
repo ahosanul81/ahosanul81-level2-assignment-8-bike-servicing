@@ -41,7 +41,10 @@ const createServiceIntoDB = (payload) => __awaiter(void 0, void 0, void 0, funct
     //   throw new AppError(404, "Selected Bike not found");
     // }
     try {
-        const result = yield prisma.service.createMany({ data: payload });
+        if (!(yield prisma.bike.findUnique({ where: { bikeId: payload.bikeId } }))) {
+            throw new globalErrorHandler_1.AppError(404, "Bike  not found");
+        }
+        const result = yield prisma.service.create({ data: payload });
         return result;
     }
     catch (error) {
