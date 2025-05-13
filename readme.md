@@ -61,28 +61,28 @@ The application uses Prisma ORM with UUIDs as the primary keys for all tables.
 
 ### 🔹 Customer Management
 
-- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers` - Create a new customer
-- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers` - Retrieve all customers
-- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/:customerId` - Get customer by ID
-- **PUT** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/customers/:customerId` - Update a customer
+- **POST** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/customers` - Create a new customer
+- **GET** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/customers` - Retrieve all customers
+- **GET** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/customers/:customerId` - Get customer by ID
+- **PUT** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/customers/:customerId` - Update a customer
 - **DELETE** `/api/customers/:customerId` - Delete a customer
 
 ---
 
 ### 🔹 Bike Management
 
-- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes` - Add a new bike
-- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes` - Retrieve all bikes
-- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/bikes/:bikeId` - Get bike by ID
+- **POST** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/bikes` - Add a new bike
+- **GET** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/bikes` - Retrieve all bikes
+- **GET** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/bikes/:bikeId` - Get bike by ID
 
 ---
 
 ### 🔹 Service Management
 
-- **POST** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services` - Create a service record
-- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services` - Get all service records
-- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/:serviceId` - Get service by ID
-- **PUT** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/update-status/:serviceId` - Update service status.
-- **GET** `https://ahosanul81-level2-assignment-8-bike.onrender.com/api/services/status/:status` - Have status = "pending" or "in-progress"
+- **POST** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/services` - Create a service record
+- **GET** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/services` - Get all service records
+- **GET** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/services/:serviceId` - Get service by ID
+- **PUT** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/services/update-status/:serviceId` - Update service status.
+- **GET** `https://ahosanul81-level2-assignment-8-bike-servicing.vercel.app/api/services/status/:status` - Have status = "pending" or "in-progress"
 
 ---
