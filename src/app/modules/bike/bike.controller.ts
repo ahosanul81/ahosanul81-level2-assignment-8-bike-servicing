@@ -2,7 +2,7 @@ import { catchAcync } from "../../utils/catchAcync";
 import { bikeService } from "./bike.service";
 
 const addBike = catchAcync(async (req, res) => {
-  const result = await bikeService.addBikeIntoDB(req.body.data);
+  const result = await bikeService.addBikeIntoDB(req.body);
   res.status(200).json({
     success: true,
     message: " added bike successfully",

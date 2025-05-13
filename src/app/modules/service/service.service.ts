@@ -32,7 +32,12 @@ const createServiceIntoDB = async (payload: any) => {
   //   throw new AppError(404, "Selected Bike not found");
   // }
   try {
-    const result = await prisma.service.createMany({ data: payload });
+    if (
+      !(await prisma.bike.findUnique({ where: { bikeId: payload.bikeId } }))
+    ) {
+      throw new AppError(404, "Bike  not found");
+    }
+    const result = await prisma.service.create({ data: payload });
     return result;
   } catch (error: any) {
     throw new AppError(400, error.message);

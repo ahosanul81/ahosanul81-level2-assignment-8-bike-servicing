@@ -3,9 +3,28 @@ import { AppError } from "../../middleware/globalErrorHandler";
 
 const prisma = new PrismaClient();
 
+// const createCustomerIntoDB = async (payload: any) => {
+//   try {
+//     const result = await prisma.customer.createMany({ data: payload });
+//     return result;
+//   } catch (error: any) {
+//     throw new AppError(500, error.message);
+//   }
+// };
 const createCustomerIntoDB = async (payload: any) => {
   try {
-    const result = await prisma.customer.createMany({ data: payload });
+    const isExistUser = await prisma.customer.findUnique({
+      where: { email: payload.email },
+    });
+    console.log(isExistUser);
+
+    if (isExistUser) {
+      throw new AppError(
+        401,
+        "This user already exist, Please try another email"
+      );
+    }
+    const result = await prisma.customer.create({ data: payload });
     return result;
   } catch (error: any) {
     throw new AppError(500, error.message);

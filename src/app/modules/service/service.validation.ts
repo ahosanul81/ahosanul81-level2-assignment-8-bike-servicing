@@ -3,12 +3,9 @@ import { z } from "zod";
 
 const create = z.object({
   body: z.object({
-    data: z.array(
-      z.object({
-        bikeId: z.string(),
-        description: z.string(),
-      })
-    ),
+    bikeId: z.string(),
+    description: z.string(),
+    status: z.string(),
   }),
 });
 
